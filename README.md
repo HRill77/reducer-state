@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Reducer vs State
+Generally for `useReducer` you need to write more codes than `useState` but there are definitely benefits in doing so.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Handling of complicated logic
+    - `useState` - handles it inside your component
+    - `useReducer` - handles it outside your component
+2. Other/Child components need to update your state
+    - `useState` - needs to pass the `value` and the `setState` function.
+    - `useReducer` - just need to pass the `dispatch`. Good thing here is that `dispatch` is always the same object in every re-render. If you use optimizations like `memo`, you will benefit from this.
+3. Debugging
+    - `useState` - hard to know where the state was set incorrectly. If you have a huge application with lots of `useState` and `complicated logic`, it is hard to tell where the issue occurs.
+    - `useReducer` - just add a logging on the `reducer` function and you'll see quickly if the issue is on the `reducer logic`. Yes, you can create a `handler function` for `useState` to achieve the same effect but the fact that you created a `handler function`, why not use `useReducer` which is intended for that use case.
+4. Testing
+    - `useState` - all the testing should be on the component
+    - `useReducer` - you can also test the reducer function separately to make sure it does what it is intended to do# Reducer vs State
+Generally for `useReducer` you need to write more codes than `useState` but there are definitely benefits in doing so.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Handling of complicated logic
+    - `useState` - handles it inside your component
+    - `useReducer` - handles it outside your component
+2. Other/Child components need to update your state
+    - `useState` - needs to pass the `value` and the `setState` function.
+    - `useReducer` - just need to pass the `dispatch`. Good thing here is that `dispatch` is always the same object in every re-render. If you use optimizations like `memo`, you will benefit from this.
+3. Debugging
+    - `useState` - hard to know where the state was set incorrectly. If you have a huge application with lots of `useState` and `complicated logic`, it is hard to tell where the issue occurs.
+    - `useReducer` - just add a logging on the `reducer` function and you'll see quickly if the issue is on the `reducer logic`. Yes, you can create a `handler function` for `useState` to achieve the same effect but the fact that you created a `handler function`, why not use `useReducer` which is intended for that use case.
+4. Testing
+    - `useState` - all the testing should be on the component
+    - `useReducer` - you can also test the reducer function separately to make sure it does what it is intended to do
